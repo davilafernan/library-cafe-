@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Menu du Café Bibliothèque - Découvrez nos boissons chaudes, plats signature et desserts maison">
+    <title>Menu - LibraryCafe</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+</head>
+<body>
+    <header>
+        <h1>Café Bibliothèque</h1>
+        <nav aria-label="Navigation principale">
+            <ul>
+                <li><a href="index.html" aria-current="page">Accueil</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="library.html">Bibliothèque</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="cart-button" aria-label="Voir le panier"></button>
+            <span class="material-symbols-outlined">shopping_cart_checkout</span>
+        </button>
+    </header>
+
+    <main>
+        <h2>Notre Menu</h2>
+        
+        <section class="menu-section" aria-labelledby="boissons-chaudes">
+            <h3 id="boissons-chaudes">Boissons Chaudes</h3>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <h4>Cappuccino</h4>
+                    <p class="description">Espresso, lait mousseux et cacao</p>
+                    <span class="price">3.50€</span>
+                    <button class="order-button">Commander</button>
+                </div>
+                <div class="menu-item">
+                    <h4>Chocolat Chaud Maison</h4>
+                    <p class="description">Chocolat belge, lait crémeux</p>
+                    <span class="price">4.00€</span>
+                    <button class="order-button">Commander</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="menu-section">
+            <h3>Plats Signature</h3>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <h4>Club Sandwich Littéraire</h4>
+                    <p class="description">Poulet grillé, bacon, avocat, tomates</p>
+                    <span class="price">12.00€</span>
+                    <button class="order-button">Commander</button>
+                </div>
+                <div class="menu-item">
+                    <h4>Quiche du Jour</h4>
+                    <p class="description">Servie avec salade verte</p>
+                    <span class="price">9.50€</span>
+                    <button class="order-button">Commander</button>
+                </div>
+                <div class="menu-item">
+                    <h4>Salade César</h4>
+                    <p class="description">Poulet, parmesan, croûtons maison</p>
+                    <span class="price">11.00€</span>
+                    <button class="order-button">Commander</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="menu-section">
+            <h3>Desserts Maison</h3>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <h4>Gâteau au Chocolat</h4>
+                    <p class="description">Chocolat noir 70%, crème fouettée</p>
+                    <span class="price">6.50€</span>
+                    <button class="order-button">Commander</button>
+                </div>
+                <div class="menu-item">
+                    <h4>Tarte aux Pommes</h4>
+                    <p class="description">Pommes caramélisées, glace vanille</p>
+                    <span class="price">5.50€</span>
+                    <button class="order-button">Commander</button>
+                </div>
+                <div class="menu-item">
+                    <h4>Crème Brûlée</h4>
+                    <p class="description">Vanille de Madagascar</p>
+                    <span class="price">6.00€</span>
+                    <button class="order-button">Commander</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+    </footer>
+</body>
+</html>
