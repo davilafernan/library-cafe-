@@ -1,3 +1,11 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:3307
+-- Généré le : ven. 28 mars 2025 à 10:40
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -12,35 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `librarycafe`
 --
-
--- --------------------------------------------------------
-
---
--- Structure de la table `categories`
---
-
-CREATE TABLE `categories` (
-  `id` int(11) NOT NULL,
-  `nom` varchar(100) NOT NULL,
-  `type` varchar(20) DEFAULT 'Boisson'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `categories`
---
-
-INSERT INTO `categories` (`id`, `nom`, `type`) VALUES
-(1, 'Lattes', 'Boisson'),
-(2, 'Macchiatos', 'Boisson'),
-(3, 'Matcha', 'Boisson'),
-(4, 'Thés', 'Boisson'),
-(5, 'Boissons Glacées', 'Boisson'),
-(6, 'Romans', 'Livre'),
-(7, 'Science-Fiction', 'Livre'),
-(8, 'Biographies', 'Livre'),
-(9, 'Poésie', 'Livre'),
-(10, 'Essais', 'Livre'),
-(11, 'BD & Mangas', 'Livre');
 
 -- --------------------------------------------------------
 
@@ -60,8 +39,27 @@ CREATE TABLE `commandes` (
 --
 
 INSERT INTO `commandes` (`id`, `total`, `utilisateur_id`, `date_commande`) VALUES
-(1, 4.50, 1, '2025-04-06 21:51:09'),
-(2, 4.50, 1, '2025-04-07 07:17:32');
+(1, 2.50, 2, '2025-02-23 15:49:36'),
+(2, 15.50, 2, '2025-02-23 15:50:00'),
+(3, 14.00, 2, '2025-02-23 16:01:03'),
+(4, 15.50, 3, '2025-02-26 16:37:48'),
+(5, 15.50, 3, '2025-02-26 18:04:48'),
+(6, 2.50, 3, '2025-02-26 18:20:35'),
+(7, 2.50, 3, '2025-02-26 18:20:49'),
+(8, 2.50, 3, '2025-02-26 18:20:53'),
+(9, 2.50, 3, '2025-02-26 18:21:09'),
+(10, 2.50, 3, '2025-02-26 18:21:19'),
+(11, 2.50, 3, '2025-02-26 18:21:55'),
+(12, 2.50, 3, '2025-02-26 18:22:08'),
+(13, 2.50, 3, '2025-02-26 18:23:03'),
+(14, 2.50, 3, '2025-02-26 18:23:10'),
+(15, 2.50, 3, '2025-02-26 18:23:16'),
+(16, 18.00, 3, '2025-02-27 08:15:32'),
+(17, 18.00, 3, '2025-02-27 08:16:23'),
+(18, 10.00, 3, '2025-03-21 15:42:57'),
+(19, 5.00, 3, '2025-03-21 15:43:05'),
+(20, 22.50, 3, '2025-03-21 15:44:07'),
+(21, 15.50, 3, '2025-03-21 15:49:13');
 
 -- --------------------------------------------------------
 
@@ -82,8 +80,57 @@ CREATE TABLE `commande_item` (
 --
 
 INSERT INTO `commande_item` (`id`, `commande_id`, `produit_id`, `quantite`, `prix`) VALUES
-(1, 1, 1, 1, 4.50),
-(2, 2, 1, 1, 4.50);
+(1, 1, 2, 1, 2.50),
+(2, 2, 1, 1, 2.50),
+(3, 2, 2, 1, 2.50),
+(4, 2, 3, 1, 3.00),
+(5, 2, 4, 1, 3.00),
+(6, 2, 5, 1, 4.50),
+(7, 3, 1, 1, 2.50),
+(8, 3, 2, 1, 2.50),
+(9, 3, 3, 1, 3.00),
+(10, 3, 4, 2, 3.00),
+(11, 4, 1, 1, 2.50),
+(12, 4, 2, 1, 2.50),
+(13, 4, 3, 1, 3.00),
+(14, 4, 4, 1, 3.00),
+(15, 4, 5, 1, 4.50),
+(16, 5, 1, 1, 2.50),
+(17, 5, 2, 1, 2.50),
+(18, 5, 3, 1, 3.00),
+(19, 5, 4, 1, 3.00),
+(20, 5, 5, 1, 4.50),
+(21, 6, 2, 1, 2.50),
+(22, 7, 2, 1, 2.50),
+(23, 8, 2, 1, 2.50),
+(24, 9, 2, 1, 2.50),
+(25, 10, 2, 1, 2.50),
+(26, 11, 2, 1, 2.50),
+(27, 12, 2, 1, 2.50),
+(28, 13, 2, 1, 2.50),
+(29, 14, 2, 1, 2.50),
+(30, 15, 2, 1, 2.50),
+(31, 16, 2, 2, 2.50),
+(32, 16, 1, 1, 2.50),
+(33, 16, 3, 1, 3.00),
+(34, 16, 4, 1, 3.00),
+(35, 16, 5, 1, 4.50),
+(36, 17, 2, 2, 2.50),
+(37, 17, 1, 1, 2.50),
+(38, 17, 3, 1, 3.00),
+(39, 17, 4, 1, 3.00),
+(40, 17, 5, 1, 4.50),
+(41, 18, 1, 2, 2.50),
+(42, 18, 2, 2, 2.50),
+(43, 19, 1, 1, 2.50),
+(44, 19, 2, 1, 2.50),
+(45, 20, 1, 1, 2.50),
+(46, 20, 2, 8, 2.50),
+(47, 21, 1, 1, 2.50),
+(48, 21, 2, 1, 2.50),
+(49, 21, 3, 1, 3.00),
+(50, 21, 4, 1, 3.50),
+(51, 21, 6, 1, 4.00);
 
 -- --------------------------------------------------------
 
@@ -94,50 +141,33 @@ INSERT INTO `commande_item` (`id`, `commande_id`, `produit_id`, `quantite`, `pri
 CREATE TABLE `produits` (
   `id` int(11) NOT NULL,
   `nom` varchar(100) NOT NULL,
-  `description` text DEFAULT NULL,
   `prix` decimal(5,2) NOT NULL,
-  `stock` int(11) DEFAULT 100,
-  `statut` varchar(50) DEFAULT 'Disponible',
-  `image` varchar(255) DEFAULT NULL,
-  `categorie_id` int(11) DEFAULT NULL,
-  `categorie` varchar(50) DEFAULT NULL,
-  `auteur` varchar(100) DEFAULT NULL,
-  `annee` int(11) DEFAULT NULL,
-  `type` varchar(20) DEFAULT 'Boisson'
+  `stock` int(11) DEFAULT 100
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `produits`
 --
 
-INSERT INTO `produits` (`id`, `nom`, `description`, `prix`, `stock`, `statut`, `image`, `categorie_id`, `categorie`, `auteur`, `annee`, `type`) VALUES
-(1, 'Caramel Macchiato', 'Espresso mélangé à du lait chaud avec un filet de caramel.', 4.50, 98, 'Disponible', 'uploads/caramel_macchiato.jpg', 2, NULL, NULL, NULL, 'Boisson'),
-(2, 'Espresso', 'Café serré au goût intense.', 2.50, 100, 'Disponible', 'uploads/expresso.jpg', 5, NULL, NULL, NULL, 'Boisson'),
-(3, 'Frappé Mangue', 'Boisson glacée à la mangue, parfaite pour l’été.', 4.00, 100, 'Populaire', 'uploads/frappemangue.jpg', 5, NULL, NULL, NULL, 'Boisson'),
-(4, 'Latte Classique', 'Espresso doux avec une grande quantité de lait chaud.', 3.50, 100, 'Disponible', 'uploads/latte_classique.jpg', 1, NULL, NULL, NULL, 'Boisson'),
-(5, 'Mint Citrus Tea', 'Thé rafraîchissant à la menthe et agrumes.', 3.20, 100, 'Disponible', 'uploads/mint_citrus.jpg', 4, NULL, NULL, NULL, 'Boisson'),
-(6, 'Thé Menthe', 'Thé vert parfumé à la menthe douce.', 2.80, 100, 'Disponible', 'uploads/Thé_menthe.jpg', 4, NULL, NULL, NULL, 'Boisson'),
-(7, 'Thé Hibiscus Glacé', 'Infusion glacée d’hibiscus, fruitée et désaltérante.', 3.00, 100, 'Disponible', 'uploads/théhybiscusglace.jpg', 4, NULL, NULL, NULL, 'Boisson'),
-(8, 'Thé Glacé Noir', 'Thé noir servi froid avec des glaçons.', 2.70, 100, 'Disponible', 'uploads/black_iced_tea.jpg', 5, NULL, NULL, NULL, 'Boisson'),
-(9, 'Café Misto', 'Mélange de café filtre et de lait chaud.', 3.00, 100, 'Disponible', 'uploads/cafe_misto.jpg', 1, NULL, NULL, NULL, 'Boisson'),
-(10, 'English Breakfast Latte', 'Thé noir corsé avec du lait chaud et de la mousse.', 3.80, 100, 'Disponible', 'uploads/english_breakfast_latte.jpg', 1, NULL, NULL, NULL, 'Boisson'),
-(11, 'Macchiato Crème', 'Boisson froide à la crème et caramel.', 4.80, 100, 'Populaire', 'uploads/macchiatocreme.jpg', 2, NULL, NULL, NULL, 'Boisson'),
-(12, 'Matcha Latte Glacé', 'Boisson fraîche au matcha, légère et énergisante.', 4.20, 100, 'Disponible', 'uploads/matcha.jpg', 3, NULL, NULL, NULL, 'Boisson'),
-(13, 'Matcha Latte Spécial', 'Double dose de matcha pour les amateurs.', 4.80, 100, 'Nouveautés', 'uploads/matcha_special.jpg', 3, NULL, NULL, NULL, 'Boisson'),
-(14, 'Thé au Lait', 'Mélange doux de thé et de lait chaud.', 3.30, 100, 'Disponible', 'uploads/thélait.jpg', 4, NULL, NULL, NULL, 'Boisson'),
-(15, 'Youthberry Tea', 'Infusion fruitée à la baie et fleurs.', 3.50, 100, 'Populaire', 'uploads/youthberry_tea.jpg', 4, NULL, NULL, NULL, 'Boisson'),
-(16, 'Yuzu Citrus Tea', 'Thé aux agrumes japonais et yuzu rafraîchissant.', 3.60, 100, 'Disponible', 'uploads/yuzu_citrus_tea.jpg', 4, NULL, NULL, NULL, 'Boisson'),
-(17, 'Camomille Tea', 'Infusion relaxante à base de camomille.', 2.90, 100, 'Disponible', 'uploads/chamomile_tea.jpg', 4, NULL, NULL, NULL, 'Boisson'),
-(18, 'Coffee at Home', 'Café filtre maison pour une dégustation simple.', 2.00, 100, 'Disponible', 'uploads/coffee_home.jpg', 5, NULL, NULL, NULL, 'Boisson'),
-(19, 'Thé English Breakfast', 'Thé noir robuste, idéal pour bien commencer la journée.', 2.80, 100, 'Disponible', 'uploads/english_breakfast_tea.jpg', 4, NULL, NULL, NULL, 'Boisson'),
-(20, 'Matcha Tea Latte', 'Boisson chaude au matcha doux et onctueux.', 3.90, 100, 'Disponible', 'uploads/matcha_tea_latte.jpg', 3, NULL, NULL, NULL, 'Boisson'),
-(21, 'Zencloud Oolong Tea', 'Oolong léger aux notes florales pour une expérience zen.', 3.50, 100, 'Nouveautés', 'uploads/zencloud_oolong.jpg', 4, NULL, NULL, NULL, 'Boisson'),
-(22, 'Le Petit Prince', 'Un récit poétique qui aborde les thèmes de l\'amitié, de l\'amour et du sens de la vie.', 12.90, 5, 'Disponible', 'uploads/petit_prince.jpg', 6, NULL, 'Antoine de Saint-Exupéry', 1943, 'Livre'),
-(23, '1984', 'Une dystopie qui présente une critique de la dictature et des régimes totalitaires.', 11.50, 3, 'Disponible', 'uploads/1984.jpg', 7, NULL, 'George Orwell', 1949, 'Livre'),
-(24, 'L\'Étranger', 'Roman existentialiste qui explore l\'absurdité de la vie humaine.', 9.90, 2, 'Disponible', 'uploads/etranger.jpg', 6, NULL, 'Albert Camus', 1942, 'Livre'),
-(25, 'Dune', 'Œuvre majeure de la science-fiction, mêlant aventure, politique et mystique.', 14.50, 4, 'Disponible', 'uploads/dune.jpg', 7, NULL, 'Frank Herbert', 1965, 'Livre'),
-(26, 'Steve Jobs', 'Biographie officielle du fondateur d\'Apple, détaillant sa vie personnelle et professionnelle.', 16.90, 2, 'Disponible', 'uploads/steve_jobs.jpg', 8, NULL, 'Walter Isaacson', 2011, 'Livre'),
-(27, 'Persepolis', 'Une autobiographie en bande dessinée sur l\'Iran pendant la révolution islamique.', 19.99, 3, 'Disponible', 'uploads/persepolis.jpg', 11, NULL, 'Marjane Satrapi', 2000, 'Livre');
+INSERT INTO `produits` (`id`, `nom`, `prix`, `stock`) VALUES
+(1, 'Thé', 2.50, 0),
+(2, 'Expresso', 2.50, 97),
+(3, 'Chocolat Chaud', 3.00, 100),
+(4, 'Thé Glacé', 3.00, 99),
+(5, 'Smoothie', 4.50, 96),
+(6, 'Latte Noisette', 2.00, 100),
+(7, 'Madelaine', 3.00, 100),
+(8, 'Tarte au Fraise', 5.00, 50),
+(9, 'Latte', 1.50, 100),
+(10, 'Chai Latte', 2.50, 100),
+(11, 'Matcha Latte', 2.50, 100),
+(12, 'Matcha', 2.00, 100),
+(13, 'Frappe', 2.00, 100),
+(14, 'Thé en bouteille', 1.00, 100),
+(15, 'Café en bouteille', 1.00, 100),
+(16, 'Milk Tea en bouteille', 1.00, 100),
+(17, 'Soda à la pêche en bouteille', 1.00, 100),
+(18, 'Ginger Ale en bouteille', 1.00, 100);
 
 -- --------------------------------------------------------
 
@@ -158,24 +188,19 @@ CREATE TABLE `utilisateurs` (
 --
 
 INSERT INTO `utilisateurs` (`id`, `nom`, `email`, `mot_de_passe`, `date_inscription`) VALUES
-(1, 'admin', 'Nour@gmail.com', '$2y$10$1RO9YZuXQwdRVGUt2IAMCuHSInZkVO5rUZMzgkeJ7K3s08AAnWpvW', '2025-04-06 16:38:00');
+(1, 'admin', 'Nour.mesbahi.0@gmail.com', '$2y$10$w/emHcEtjtahKs4qYA.68.F4pSe/4jGJnIDouJx6rFUYOX4GFCLjy', '2025-02-12 10:59:29'),
+(2, 'Mesbahi', 'Nour.mesbahi@gmail.com', '$2y$10$FxORK8KpNk6I9LJefznUNehJXxhQP6YK8q4q8QIWX53kfjOsgmUzO', '2025-02-22 17:46:50'),
+(3, 'moi', 'Nour@gmail.com', '$2y$10$bwSX8iPish1CVWO8uJzz.OzP15eg8ohl9wcV11UAh8djxF7RJHLxK', '2025-02-26 16:37:28');
 
 --
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Index pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `utilisateur_id` (`utilisateur_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `commande_item`
@@ -188,8 +213,7 @@ ALTER TABLE `commande_item`
 -- Index pour la table `produits`
 --
 ALTER TABLE `produits`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `categorie_id` (`categorie_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `utilisateurs`
@@ -203,57 +227,54 @@ ALTER TABLE `utilisateurs`
 --
 
 --
--- AUTO_INCREMENT pour la table `categories`
---
-ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
 -- AUTO_INCREMENT pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT pour la table `commande_item`
 --
 ALTER TABLE `commande_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT pour la table `produits`
 --
 ALTER TABLE `produits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Contraintes pour les tables déchargées
 --
 
 --
--- Contraintes pour la table `commandes`
---
-ALTER TABLE `commandes`
-  ADD CONSTRAINT `commandes_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`id`) ON DELETE CASCADE;
-
---
 -- Contraintes pour la table `commande_item`
 --
 ALTER TABLE `commande_item`
-  ADD CONSTRAINT `commande_item_ibfk_1` FOREIGN KEY (`commande_id`) REFERENCES `commandes` (`id`) ON DELETE CASCADE;
-
---
--- Contraintes pour la table `produits`
---
-ALTER TABLE `produits`
-  ADD CONSTRAINT `produits_ibfk_1` FOREIGN KEY (`categorie_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL;
+  ADD CONSTRAINT `commande_item_ibfk_1` FOREIGN KEY (`commande_id`) REFERENCES `commandes` (`id`);
 COMMIT;
+
+CREATE TABLE categories (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100) NOT NULL
+);
+
+ALTER TABLE produits ADD categorie_id INT DEFAULT NULL;
+ALTER TABLE produits
+  ADD FOREIGN KEY (categorie_id) REFERENCES categories(id);
+ALTER TABLE produits ADD image VARCHAR(255) DEFAULT NULL;
+ALTER TABLE produits
+ADD description TEXT AFTER nom,
+ADD statut VARCHAR(50) DEFAULT 'Disponible' AFTER stock,
+MODIFY image VARCHAR(255) DEFAULT NULL;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

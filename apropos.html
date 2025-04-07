@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos - Library Cafe</title>
+    <style>
+        /* Réinitialisation et styles globaux */
+        body, h1, h2, p, ul {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #2D1B14;
+            color: #fff;
+        }
+
+        /* Barre de navigation */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #3E2723;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #D7CCC8;
+        }
+
+        /* Section héroïque */
+        .hero {
+            position: relative;
+            height: 90vh;
+            background: url('lib.png') no-repeat center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+
+        .cta-button {
+            background: #8D6E63;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #A1887F;
+        }
+
+        /* Section À propos */
+        .about {
+            padding: 50px 5%;
+            text-align: center;
+           
+        }
+
+        
+        .about p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #3E2723;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Library Cafe</div>
+            <ul class="nav-links">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">Livres</a></li>
+                <li><a href="#">Événements</a></li>
+                <li><a href="#">À propos</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Notre concept</h1>
+            <p class="subtitle">
+              Un lieu chaleureux pour les amoureux des mots et des saveurs. Vivez des moments de détente autour d'une bonne lecture et d'un café gourmand.
+            </p>
+            <div class="about-details">
+              <div class="text">
+                <h2>Bienvenue chez LIBRARY CAFE</h2>
+                <p>
+                  Nous avons créé un espace unique où littérature et gourmandise se rencontrent. Que vous soyez passionné de romans, de poésie ou simplement curieux, vous trouverez ici une atmosphère propice à la découverte et à la détente.
+                </p>
+                <blockquote>
+                  « Chaque livre est une aventure, chaque tasse un voyage. »
+                </blockquote>
+                <p>- L'équipe de LIBRARY CAFE</p>
+              </div>
+    </section>
+
+    <section class="about">
+        <p>Avec LIBRARY CAFE, vous allez aimer prendre le temps.</p>
+    </section>
+
+
+
+    <footer>
+        <p>Contactez-nous : contact@librarycafe2025.com | Téléphone : 01 23 45 67 89</p>
+    </footer>
+
+    <script>
+        // Ajoute une animation de fade-in pour la section héroïque
+        document.addEventListener("DOMContentLoaded", () => {
+            const heroContent = document.querySelector(".hero-content");
+            heroContent.style.opacity = "0";
+            heroContent.style.transform = "translateY(20px)";
+            
+            setTimeout(() => {
+                heroContent.style.transition = "opacity 1s ease-out, transform 1s ease-out";
+                heroContent.style.opacity = "1";
+                heroContent.style.transform = "translateY(0)";
+            }, 300);
+        });
+    </script>
+</body>
+</html>
