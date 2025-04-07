@@ -1,11 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Hôte : 127.0.0.1
--- Généré le : dim. 06 avr. 2025 à 21:35
--- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,19 +21,26 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
-  `nom` varchar(100) NOT NULL
+  `nom` varchar(100) NOT NULL,
+  `type` varchar(20) DEFAULT 'Boisson'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `categories`
 --
 
-INSERT INTO `categories` (`id`, `nom`) VALUES
-(1, 'Lattes'),
-(2, 'Macchiatos'),
-(3, 'Matcha'),
-(4, 'Thés'),
-(5, 'Boissons Glacées');
+INSERT INTO `categories` (`id`, `nom`, `type`) VALUES
+(1, 'Lattes', 'Boisson'),
+(2, 'Macchiatos', 'Boisson'),
+(3, 'Matcha', 'Boisson'),
+(4, 'Thés', 'Boisson'),
+(5, 'Boissons Glacées', 'Boisson'),
+(6, 'Romans', 'Livre'),
+(7, 'Science-Fiction', 'Livre'),
+(8, 'Biographies', 'Livre'),
+(9, 'Poésie', 'Livre'),
+(10, 'Essais', 'Livre'),
+(11, 'BD & Mangas', 'Livre');
 
 -- --------------------------------------------------------
 
@@ -55,6 +54,14 @@ CREATE TABLE `commandes` (
   `utilisateur_id` int(11) NOT NULL,
   `date_commande` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `commandes`
+--
+
+INSERT INTO `commandes` (`id`, `total`, `utilisateur_id`, `date_commande`) VALUES
+(1, 4.50, 1, '2025-04-06 21:51:09'),
+(2, 4.50, 1, '2025-04-07 07:17:32');
 
 -- --------------------------------------------------------
 
@@ -70,6 +77,14 @@ CREATE TABLE `commande_item` (
   `prix` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `commande_item`
+--
+
+INSERT INTO `commande_item` (`id`, `commande_id`, `produit_id`, `quantite`, `prix`) VALUES
+(1, 1, 1, 1, 4.50),
+(2, 2, 1, 1, 4.50);
+
 -- --------------------------------------------------------
 
 --
@@ -84,50 +99,45 @@ CREATE TABLE `produits` (
   `stock` int(11) DEFAULT 100,
   `statut` varchar(50) DEFAULT 'Disponible',
   `image` varchar(255) DEFAULT NULL,
-  `categorie_id` int(11) DEFAULT NULL
+  `categorie_id` int(11) DEFAULT NULL,
+  `categorie` varchar(50) DEFAULT NULL,
+  `auteur` varchar(100) DEFAULT NULL,
+  `annee` int(11) DEFAULT NULL,
+  `type` varchar(20) DEFAULT 'Boisson'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `produits`
 --
 
-INSERT INTO `produits` (`id`, `nom`, `description`, `prix`, `stock`, `statut`, `image`, `categorie_id`) VALUES
-(1, 'Latte Classique', 'Un délicieux latte onctueux classique.', 2.50, 100, 'Disponible', 'latte_classique.jpg', 1),
-(2, 'Macchiato Crème', 'Macchiato doux avec crème fouettée.', 3.00, 100, 'Disponible', 'macchiato_creme.jpg', 2),
-(3, 'Caramel Macchiato', 'Espresso riche, lait chaud et caramel.', 3.80, 100, 'Disponible', 'caramel_macchiato.jpg', 2),
-(4, 'Matcha Latte', 'Latte au matcha onctueux, doux et rafraîchissant.', 3.50, 100, 'Disponible', 'matcha_latte.jpg', 3),
-(5, 'Matcha Latte Duo', 'Version chaude et glacée du célèbre matcha.', 4.20, 100, 'Disponible', 'matcha_latte_duo.jpg', 3),
-(6, 'Matcha Latte Glacé', 'Latte glacé au matcha vibrant.', 3.60, 100, 'Disponible', 'iced_matcha_latte.jpg', 3),
-(7, 'Matcha Latte Crème', 'Latte au matcha avec mousse crémeuse.', 3.40, 100, 'Disponible', 'matcha_latte_creme.jpg', 3),
-(8, 'English Breakfast Latte', 'Thé noir classique avec une touche de lait.', 3.00, 100, 'Disponible', 'english_breakfast_latte.jpg', 4),
-(9, 'Thé Noir Glacé', 'Thé noir infusé à froid, parfait pour l’été.', 2.00, 100, 'Disponible', 'iced_black_tea.jpg', 4),
-(10, 'Latte Classique', 'Un délicieux latte onctueux classique.', 2.50, 100, 'Disponible', 'latte_classique.jpg', 1),
-(11, 'Macchiato Crème', 'Macchiato doux avec crème fouettée.', 3.00, 100, 'Disponible', 'macchiato_creme.jpg', 2),
-(12, 'Caramel Macchiato', 'Espresso riche, lait chaud et caramel.', 3.80, 100, 'Disponible', 'caramel_macchiato.jpg', 2),
-(13, 'Matcha Latte', 'Latte au matcha onctueux, doux et rafraîchissant.', 3.50, 100, 'Disponible', 'matcha_latte.jpg', 3),
-(14, 'Matcha Latte Duo', 'Version chaude et glacée du célèbre matcha.', 4.20, 100, 'Disponible', 'matcha_latte_duo.jpg', 3),
-(15, 'Matcha Latte Glacé', 'Latte glacé au matcha vibrant.', 3.60, 100, 'Disponible', 'iced_matcha_latte.jpg', 3),
-(16, 'Matcha Latte Crème', 'Latte au matcha avec mousse crémeuse.', 3.40, 100, 'Disponible', 'matcha_latte_creme.jpg', 3),
-(17, 'English Breakfast Latte', 'Thé noir classique avec une touche de lait.', 3.00, 100, 'Disponible', 'english_breakfast_latte.jpg', 4),
-(18, 'Thé Noir Glacé', 'Thé noir infusé à froid, parfait pour l’été.', 2.00, 100, 'Disponible', 'iced_black_tea.jpg', 4),
-(19, 'Latte Classique', 'Un délicieux latte onctueux classique.', 2.50, 100, 'Disponible', 'latte_classique.jpg', 1),
-(20, 'Macchiato Crème', 'Macchiato doux avec crème fouettée.', 3.00, 100, 'Disponible', 'macchiato_creme.jpg', 2),
-(21, 'Caramel Macchiato', 'Espresso riche, lait chaud et caramel.', 3.80, 100, 'Disponible', 'caramel_macchiato.jpg', 2),
-(22, 'Matcha Latte', 'Latte au matcha onctueux, doux et rafraîchissant.', 3.50, 100, 'Disponible', 'matcha_latte.jpg', 3),
-(23, 'Matcha Latte Duo', 'Version chaude et glacée du célèbre matcha.', 4.20, 100, 'Disponible', 'matcha_latte_duo.jpg', 3),
-(24, 'Matcha Latte Glacé', 'Latte glacé au matcha vibrant.', 3.60, 100, 'Disponible', 'iced_matcha_latte.jpg', 3),
-(25, 'Matcha Latte Crème', 'Latte au matcha avec mousse crémeuse.', 3.40, 100, 'Disponible', 'matcha_latte_creme.jpg', 3),
-(26, 'English Breakfast Latte', 'Thé noir classique avec une touche de lait.', 3.00, 100, 'Disponible', 'english_breakfast_latte.jpg', 4),
-(27, 'Thé Noir Glacé', 'Thé noir infusé à froid, parfait pour l’été.', 2.00, 100, 'Disponible', 'iced_black_tea.jpg', 4),
-(28, 'Latte Classique', 'Un délicieux latte onctueux classique.', 2.50, 100, 'Disponible', 'latte_classique.jpg', 1),
-(29, 'Macchiato Crème', 'Macchiato doux avec crème fouettée.', 3.00, 100, 'Disponible', 'macchiato_creme.jpg', 2),
-(30, 'Caramel Macchiato', 'Espresso riche, lait chaud et caramel.', 3.80, 100, 'Disponible', 'caramel_macchiato.jpg', 2),
-(31, 'Matcha Latte', 'Latte au matcha onctueux, doux et rafraîchissant.', 3.50, 100, 'Disponible', 'matcha_latte.jpg', 3),
-(32, 'Matcha Latte Duo', 'Version chaude et glacée du célèbre matcha.', 4.20, 100, 'Disponible', 'matcha_latte_duo.jpg', 3),
-(33, 'Matcha Latte Glacé', 'Latte glacé au matcha vibrant.', 3.60, 100, 'Disponible', 'iced_matcha_latte.jpg', 3),
-(34, 'Matcha Latte Crème', 'Latte au matcha avec mousse crémeuse.', 3.40, 100, 'Disponible', 'matcha_latte_creme.jpg', 3),
-(35, 'English Breakfast Latte', 'Thé noir classique avec une touche de lait.', 3.00, 100, 'Disponible', 'english_breakfast_latte.jpg', 4),
-(36, 'Thé Noir Glacé', 'Thé noir infusé à froid, parfait pour l’été.', 2.00, 100, 'Disponible', 'iced_black_tea.jpg', 4);
+INSERT INTO `produits` (`id`, `nom`, `description`, `prix`, `stock`, `statut`, `image`, `categorie_id`, `categorie`, `auteur`, `annee`, `type`) VALUES
+(1, 'Caramel Macchiato', 'Espresso mélangé à du lait chaud avec un filet de caramel.', 4.50, 98, 'Disponible', 'uploads/caramel_macchiato.jpg', 2, NULL, NULL, NULL, 'Boisson'),
+(2, 'Espresso', 'Café serré au goût intense.', 2.50, 100, 'Disponible', 'uploads/expresso.jpg', 5, NULL, NULL, NULL, 'Boisson'),
+(3, 'Frappé Mangue', 'Boisson glacée à la mangue, parfaite pour l’été.', 4.00, 100, 'Populaire', 'uploads/frappemangue.jpg', 5, NULL, NULL, NULL, 'Boisson'),
+(4, 'Latte Classique', 'Espresso doux avec une grande quantité de lait chaud.', 3.50, 100, 'Disponible', 'uploads/latte_classique.jpg', 1, NULL, NULL, NULL, 'Boisson'),
+(5, 'Mint Citrus Tea', 'Thé rafraîchissant à la menthe et agrumes.', 3.20, 100, 'Disponible', 'uploads/mint_citrus.jpg', 4, NULL, NULL, NULL, 'Boisson'),
+(6, 'Thé Menthe', 'Thé vert parfumé à la menthe douce.', 2.80, 100, 'Disponible', 'uploads/Thé_menthe.jpg', 4, NULL, NULL, NULL, 'Boisson'),
+(7, 'Thé Hibiscus Glacé', 'Infusion glacée d’hibiscus, fruitée et désaltérante.', 3.00, 100, 'Disponible', 'uploads/théhybiscusglace.jpg', 4, NULL, NULL, NULL, 'Boisson'),
+(8, 'Thé Glacé Noir', 'Thé noir servi froid avec des glaçons.', 2.70, 100, 'Disponible', 'uploads/black_iced_tea.jpg', 5, NULL, NULL, NULL, 'Boisson'),
+(9, 'Café Misto', 'Mélange de café filtre et de lait chaud.', 3.00, 100, 'Disponible', 'uploads/cafe_misto.jpg', 1, NULL, NULL, NULL, 'Boisson'),
+(10, 'English Breakfast Latte', 'Thé noir corsé avec du lait chaud et de la mousse.', 3.80, 100, 'Disponible', 'uploads/english_breakfast_latte.jpg', 1, NULL, NULL, NULL, 'Boisson'),
+(11, 'Macchiato Crème', 'Boisson froide à la crème et caramel.', 4.80, 100, 'Populaire', 'uploads/macchiatocreme.jpg', 2, NULL, NULL, NULL, 'Boisson'),
+(12, 'Matcha Latte Glacé', 'Boisson fraîche au matcha, légère et énergisante.', 4.20, 100, 'Disponible', 'uploads/matcha.jpg', 3, NULL, NULL, NULL, 'Boisson'),
+(13, 'Matcha Latte Spécial', 'Double dose de matcha pour les amateurs.', 4.80, 100, 'Nouveautés', 'uploads/matcha_special.jpg', 3, NULL, NULL, NULL, 'Boisson'),
+(14, 'Thé au Lait', 'Mélange doux de thé et de lait chaud.', 3.30, 100, 'Disponible', 'uploads/thélait.jpg', 4, NULL, NULL, NULL, 'Boisson'),
+(15, 'Youthberry Tea', 'Infusion fruitée à la baie et fleurs.', 3.50, 100, 'Populaire', 'uploads/youthberry_tea.jpg', 4, NULL, NULL, NULL, 'Boisson'),
+(16, 'Yuzu Citrus Tea', 'Thé aux agrumes japonais et yuzu rafraîchissant.', 3.60, 100, 'Disponible', 'uploads/yuzu_citrus_tea.jpg', 4, NULL, NULL, NULL, 'Boisson'),
+(17, 'Camomille Tea', 'Infusion relaxante à base de camomille.', 2.90, 100, 'Disponible', 'uploads/chamomile_tea.jpg', 4, NULL, NULL, NULL, 'Boisson'),
+(18, 'Coffee at Home', 'Café filtre maison pour une dégustation simple.', 2.00, 100, 'Disponible', 'uploads/coffee_home.jpg', 5, NULL, NULL, NULL, 'Boisson'),
+(19, 'Thé English Breakfast', 'Thé noir robuste, idéal pour bien commencer la journée.', 2.80, 100, 'Disponible', 'uploads/english_breakfast_tea.jpg', 4, NULL, NULL, NULL, 'Boisson'),
+(20, 'Matcha Tea Latte', 'Boisson chaude au matcha doux et onctueux.', 3.90, 100, 'Disponible', 'uploads/matcha_tea_latte.jpg', 3, NULL, NULL, NULL, 'Boisson'),
+(21, 'Zencloud Oolong Tea', 'Oolong léger aux notes florales pour une expérience zen.', 3.50, 100, 'Nouveautés', 'uploads/zencloud_oolong.jpg', 4, NULL, NULL, NULL, 'Boisson'),
+(22, 'Le Petit Prince', 'Un récit poétique qui aborde les thèmes de l\'amitié, de l\'amour et du sens de la vie.', 12.90, 5, 'Disponible', 'uploads/petit_prince.jpg', 6, NULL, 'Antoine de Saint-Exupéry', 1943, 'Livre'),
+(23, '1984', 'Une dystopie qui présente une critique de la dictature et des régimes totalitaires.', 11.50, 3, 'Disponible', 'uploads/1984.jpg', 7, NULL, 'George Orwell', 1949, 'Livre'),
+(24, 'L\'Étranger', 'Roman existentialiste qui explore l\'absurdité de la vie humaine.', 9.90, 2, 'Disponible', 'uploads/etranger.jpg', 6, NULL, 'Albert Camus', 1942, 'Livre'),
+(25, 'Dune', 'Œuvre majeure de la science-fiction, mêlant aventure, politique et mystique.', 14.50, 4, 'Disponible', 'uploads/dune.jpg', 7, NULL, 'Frank Herbert', 1965, 'Livre'),
+(26, 'Steve Jobs', 'Biographie officielle du fondateur d\'Apple, détaillant sa vie personnelle et professionnelle.', 16.90, 2, 'Disponible', 'uploads/steve_jobs.jpg', 8, NULL, 'Walter Isaacson', 2011, 'Livre'),
+(27, 'Persepolis', 'Une autobiographie en bande dessinée sur l\'Iran pendant la révolution islamique.', 19.99, 3, 'Disponible', 'uploads/persepolis.jpg', 11, NULL, 'Marjane Satrapi', 2000, 'Livre');
 
 -- --------------------------------------------------------
 
@@ -196,25 +206,25 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `commande_item`
 --
 ALTER TABLE `commande_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `produits`
 --
 ALTER TABLE `produits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
