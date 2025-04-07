@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3307
--- Généré le : ven. 28 mars 2025 à 10:40
+-- Hôte : 127.0.0.1
+-- Généré le : lun. 07 avr. 2025 à 15:09
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -24,6 +24,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `type` varchar(20) DEFAULT 'Boisson'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `categories`
+--
+
+INSERT INTO `categories` (`id`, `nom`, `type`) VALUES
+(1, 'Lattes', 'Boisson'),
+(2, 'Macchiatos', 'Boisson'),
+(3, 'Matcha', 'Boisson'),
+(4, 'Thés', 'Boisson'),
+(5, 'Boissons Glacées', 'Boisson'),
+(6, 'Romans', 'Livre'),
+(7, 'Science-Fiction', 'Livre'),
+(8, 'Biographies', 'Livre'),
+(9, 'Poésie', 'Livre'),
+(10, 'Essais', 'Livre'),
+(11, 'BD & Mangas', 'Livre'),
+(12, 'Snack Gâteaux', 'Boisson'),
+(13, 'Snack Glacé', 'Boisson'),
+(14, 'Snack Chocolat', 'Boisson');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `commandes`
 --
 
@@ -39,27 +71,9 @@ CREATE TABLE `commandes` (
 --
 
 INSERT INTO `commandes` (`id`, `total`, `utilisateur_id`, `date_commande`) VALUES
-(1, 2.50, 2, '2025-02-23 15:49:36'),
-(2, 15.50, 2, '2025-02-23 15:50:00'),
-(3, 14.00, 2, '2025-02-23 16:01:03'),
-(4, 15.50, 3, '2025-02-26 16:37:48'),
-(5, 15.50, 3, '2025-02-26 18:04:48'),
-(6, 2.50, 3, '2025-02-26 18:20:35'),
-(7, 2.50, 3, '2025-02-26 18:20:49'),
-(8, 2.50, 3, '2025-02-26 18:20:53'),
-(9, 2.50, 3, '2025-02-26 18:21:09'),
-(10, 2.50, 3, '2025-02-26 18:21:19'),
-(11, 2.50, 3, '2025-02-26 18:21:55'),
-(12, 2.50, 3, '2025-02-26 18:22:08'),
-(13, 2.50, 3, '2025-02-26 18:23:03'),
-(14, 2.50, 3, '2025-02-26 18:23:10'),
-(15, 2.50, 3, '2025-02-26 18:23:16'),
-(16, 18.00, 3, '2025-02-27 08:15:32'),
-(17, 18.00, 3, '2025-02-27 08:16:23'),
-(18, 10.00, 3, '2025-03-21 15:42:57'),
-(19, 5.00, 3, '2025-03-21 15:43:05'),
-(20, 22.50, 3, '2025-03-21 15:44:07'),
-(21, 15.50, 3, '2025-03-21 15:49:13');
+(1, 4.50, 1, '2025-04-06 21:51:09'),
+(2, 4.50, 1, '2025-04-07 07:17:32'),
+(3, 4.50, 1, '2025-04-07 11:20:04');
 
 -- --------------------------------------------------------
 
@@ -80,57 +94,30 @@ CREATE TABLE `commande_item` (
 --
 
 INSERT INTO `commande_item` (`id`, `commande_id`, `produit_id`, `quantite`, `prix`) VALUES
-(1, 1, 2, 1, 2.50),
-(2, 2, 1, 1, 2.50),
-(3, 2, 2, 1, 2.50),
-(4, 2, 3, 1, 3.00),
-(5, 2, 4, 1, 3.00),
-(6, 2, 5, 1, 4.50),
-(7, 3, 1, 1, 2.50),
-(8, 3, 2, 1, 2.50),
-(9, 3, 3, 1, 3.00),
-(10, 3, 4, 2, 3.00),
-(11, 4, 1, 1, 2.50),
-(12, 4, 2, 1, 2.50),
-(13, 4, 3, 1, 3.00),
-(14, 4, 4, 1, 3.00),
-(15, 4, 5, 1, 4.50),
-(16, 5, 1, 1, 2.50),
-(17, 5, 2, 1, 2.50),
-(18, 5, 3, 1, 3.00),
-(19, 5, 4, 1, 3.00),
-(20, 5, 5, 1, 4.50),
-(21, 6, 2, 1, 2.50),
-(22, 7, 2, 1, 2.50),
-(23, 8, 2, 1, 2.50),
-(24, 9, 2, 1, 2.50),
-(25, 10, 2, 1, 2.50),
-(26, 11, 2, 1, 2.50),
-(27, 12, 2, 1, 2.50),
-(28, 13, 2, 1, 2.50),
-(29, 14, 2, 1, 2.50),
-(30, 15, 2, 1, 2.50),
-(31, 16, 2, 2, 2.50),
-(32, 16, 1, 1, 2.50),
-(33, 16, 3, 1, 3.00),
-(34, 16, 4, 1, 3.00),
-(35, 16, 5, 1, 4.50),
-(36, 17, 2, 2, 2.50),
-(37, 17, 1, 1, 2.50),
-(38, 17, 3, 1, 3.00),
-(39, 17, 4, 1, 3.00),
-(40, 17, 5, 1, 4.50),
-(41, 18, 1, 2, 2.50),
-(42, 18, 2, 2, 2.50),
-(43, 19, 1, 1, 2.50),
-(44, 19, 2, 1, 2.50),
-(45, 20, 1, 1, 2.50),
-(46, 20, 2, 8, 2.50),
-(47, 21, 1, 1, 2.50),
-(48, 21, 2, 1, 2.50),
-(49, 21, 3, 1, 3.00),
-(50, 21, 4, 1, 3.50),
-(51, 21, 6, 1, 4.00);
+(1, 1, 1, 1, 4.50),
+(2, 2, 1, 1, 4.50),
+(3, 3, 1, 1, 4.50);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `fournisseurs`
+--
+
+CREATE TABLE `fournisseurs` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(100) NOT NULL,
+  `contact` varchar(100) DEFAULT NULL,
+  `telephone` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `fournisseurs`
+--
+
+INSERT INTO `fournisseurs` (`id`, `nom`, `contact`, `telephone`) VALUES
+(1, 'Starbucks', 'Service commercial', '01 23 45 67 89'),
+(2, 'McDonald\'s', 'Service achats', '01 98 76 54 32');
 
 -- --------------------------------------------------------
 
@@ -141,33 +128,66 @@ INSERT INTO `commande_item` (`id`, `commande_id`, `produit_id`, `quantite`, `pri
 CREATE TABLE `produits` (
   `id` int(11) NOT NULL,
   `nom` varchar(100) NOT NULL,
+  `description` text DEFAULT NULL,
   `prix` decimal(5,2) NOT NULL,
-  `stock` int(11) DEFAULT 100
+  `stock` int(11) DEFAULT 100,
+  `statut` varchar(50) DEFAULT 'Disponible',
+  `image` varchar(255) DEFAULT NULL,
+  `categorie_id` int(11) DEFAULT NULL,
+  `categorie` varchar(50) DEFAULT NULL,
+  `auteur` varchar(100) DEFAULT NULL,
+  `annee` int(11) DEFAULT NULL,
+  `type` varchar(20) DEFAULT 'Boisson',
+  `fournisseur_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `produits`
 --
 
-INSERT INTO `produits` (`id`, `nom`, `prix`, `stock`) VALUES
-(1, 'Thé', 2.50, 0),
-(2, 'Expresso', 2.50, 97),
-(3, 'Chocolat Chaud', 3.00, 100),
-(4, 'Thé Glacé', 3.00, 99),
-(5, 'Smoothie', 4.50, 96),
-(6, 'Latte Noisette', 2.00, 100),
-(7, 'Madelaine', 3.00, 100),
-(8, 'Tarte au Fraise', 5.00, 50),
-(9, 'Latte', 1.50, 100),
-(10, 'Chai Latte', 2.50, 100),
-(11, 'Matcha Latte', 2.50, 100),
-(12, 'Matcha', 2.00, 100),
-(13, 'Frappe', 2.00, 100),
-(14, 'Thé en bouteille', 1.00, 100),
-(15, 'Café en bouteille', 1.00, 100),
-(16, 'Milk Tea en bouteille', 1.00, 100),
-(17, 'Soda à la pêche en bouteille', 1.00, 100),
-(18, 'Ginger Ale en bouteille', 1.00, 100);
+INSERT INTO `produits` (`id`, `nom`, `description`, `prix`, `stock`, `statut`, `image`, `categorie_id`, `categorie`, `auteur`, `annee`, `type`, `fournisseur_id`) VALUES
+(1, 'Caramel Macchiato', 'Espresso mélangé à du lait chaud avec un filet de caramel.', 4.50, 97, 'Disponible', 'uploads/caramel_macchiato.jpg', 2, NULL, NULL, NULL, 'Boisson', NULL),
+(2, 'Espresso', 'Café serré au goût intense.', 2.50, 100, 'Disponible', 'uploads/expresso.jpg', 5, NULL, NULL, NULL, 'Boisson', NULL),
+(3, 'Frappé Mangue', 'Boisson glacée à la mangue, parfaite pour l’été.', 4.00, 100, 'Populaire', 'uploads/frappemangue.jpg', 5, NULL, NULL, NULL, 'Boisson', NULL),
+(4, 'Latte Classique', 'Espresso doux avec une grande quantité de lait chaud.', 3.50, 100, 'Disponible', 'uploads/latte_classique.jpg', 1, NULL, NULL, NULL, 'Boisson', NULL),
+(5, 'Mint Citrus Tea', 'Thé rafraîchissant à la menthe et agrumes.', 3.20, 100, 'Disponible', 'uploads/mint_citrus.jpg', 4, NULL, NULL, NULL, 'Boisson', NULL),
+(6, 'Thé Menthe', 'Thé vert parfumé à la menthe douce.', 2.80, 100, 'Disponible', 'uploads/Thé_menthe.jpg', 4, NULL, NULL, NULL, 'Boisson', NULL),
+(7, 'Thé Hibiscus Glacé', 'Infusion glacée d’hibiscus, fruitée et désaltérante.', 3.00, 100, 'Disponible', 'uploads/théhybiscusglace.jpg', 4, NULL, NULL, NULL, 'Boisson', NULL),
+(8, 'Thé Glacé Noir', 'Thé noir servi froid avec des glaçons.', 2.70, 100, 'Disponible', 'uploads/black_iced_tea.jpg', 5, NULL, NULL, NULL, 'Boisson', NULL),
+(9, 'Café Misto', 'Mélange de café filtre et de lait chaud.', 3.00, 100, 'Disponible', 'uploads/cafe_misto.jpg', 1, NULL, NULL, NULL, 'Boisson', NULL),
+(10, 'English Breakfast Latte', 'Thé noir corsé avec du lait chaud et de la mousse.', 3.80, 100, 'Disponible', 'uploads/english_breakfast_latte.jpg', 1, NULL, NULL, NULL, 'Boisson', NULL),
+(11, 'Macchiato Crème', 'Boisson froide à la crème et caramel.', 4.80, 100, 'Populaire', 'uploads/macchiatocreme.jpg', 2, NULL, NULL, NULL, 'Boisson', NULL),
+(12, 'Matcha Latte Glacé', 'Boisson fraîche au matcha, légère et énergisante.', 4.20, 100, 'Disponible', 'uploads/matcha.jpg', 3, NULL, NULL, NULL, 'Boisson', NULL),
+(13, 'Matcha Latte Spécial', 'Double dose de matcha pour les amateurs.', 4.80, 100, 'Nouveautés', 'uploads/matcha_special.jpg', 3, NULL, NULL, NULL, 'Boisson', NULL),
+(14, 'Thé au Lait', 'Mélange doux de thé et de lait chaud.', 3.30, 100, 'Disponible', 'uploads/thélait.jpg', 4, NULL, NULL, NULL, 'Boisson', NULL),
+(15, 'Youthberry Tea', 'Infusion fruitée à la baie et fleurs.', 3.50, 100, 'Populaire', 'uploads/youthberry_tea.jpg', 4, NULL, NULL, NULL, 'Boisson', NULL),
+(16, 'Yuzu Citrus Tea', 'Thé aux agrumes japonais et yuzu rafraîchissant.', 3.60, 100, 'Disponible', 'uploads/yuzu_citrus_tea.jpg', 4, NULL, NULL, NULL, 'Boisson', NULL),
+(17, 'Camomille Tea', 'Infusion relaxante à base de camomille.', 2.90, 100, 'Disponible', 'uploads/chamomile_tea.jpg', 4, NULL, NULL, NULL, 'Boisson', NULL),
+(18, 'Coffee at Home', 'Café filtre maison pour une dégustation simple.', 2.00, 100, 'Disponible', 'uploads/coffee_home.jpg', 5, NULL, NULL, NULL, 'Boisson', NULL),
+(19, 'Thé English Breakfast', 'Thé noir robuste, idéal pour bien commencer la journée.', 2.80, 100, 'Disponible', 'uploads/english_breakfast_tea.jpg', 4, NULL, NULL, NULL, 'Boisson', NULL),
+(20, 'Matcha Tea Latte', 'Boisson chaude au matcha doux et onctueux.', 3.90, 100, 'Disponible', 'uploads/matcha_tea_latte.jpg', 3, NULL, NULL, NULL, 'Boisson', NULL),
+(21, 'Zencloud Oolong Tea', 'Oolong léger aux notes florales pour une expérience zen.', 3.50, 100, 'Nouveautés', 'uploads/zencloud_oolong.jpg', 4, NULL, NULL, NULL, 'Boisson', NULL),
+(22, 'Le Petit Prince', 'Un récit poétique qui aborde les thèmes de l\'amitié, de l\'amour et du sens de la vie.', 12.90, 5, 'Disponible', 'uploads/petit_prince.jpg', 6, NULL, 'Antoine de Saint-Exupéry', 1943, 'Livre', NULL),
+(23, '1984', 'Une dystopie qui présente une critique de la dictature et des régimes totalitaires.', 11.50, 3, 'Disponible', 'uploads/1984.jpg', 7, NULL, 'George Orwell', 1949, 'Livre', NULL),
+(24, 'L\'Étranger', 'Roman existentialiste qui explore l\'absurdité de la vie humaine.', 9.90, 2, 'Disponible', 'uploads/etranger.jpg', 6, NULL, 'Albert Camus', 1942, 'Livre', NULL),
+(25, 'Dune', 'Œuvre majeure de la science-fiction, mêlant aventure, politique et mystique.', 14.50, 4, 'Disponible', 'uploads/dune.jpg', 7, NULL, 'Frank Herbert', 1965, 'Livre', NULL),
+(26, 'Steve Jobs', 'Biographie officielle du fondateur d\'Apple, détaillant sa vie personnelle et professionnelle.', 16.90, 2, 'Disponible', 'uploads/steve_jobs.jpg', 8, NULL, 'Walter Isaacson', 2011, 'Livre', NULL),
+(27, 'Persepolis', 'Une autobiographie en bande dessinée sur l\'Iran pendant la révolution islamique.', 19.99, 3, 'Disponible', 'uploads/persepolis.jpg', 11, NULL, 'Marjane Satrapi', 2000, 'Livre', NULL),
+(28, 'Orgueil et Préjugés', 'Chef-d\'œuvre de Jane Austen qui explore les thèmes du mariage, de la morale, de l\'éducation et des préjugés dans la société anglaise du début du XIXe siècle.', 11.90, 4, 'Disponible', 'uploads/orgueil_et_prejuges.jpg', 6, NULL, 'Jane Austen', 1813, 'Livre', NULL),
+(29, 'Inferno', 'Dante, un chevalier templier de la croisade qui a commis de nombreuses atrocités au cours de la troisième croisade. Dante est chargé de garder un groupe de prisonniers en sécurité afin que le roi Richard Ier puisse obtenir une relique sacrée, la Vraie Croix, de Saladin.', 13.50, 3, 'Disponible', 'uploads/inferno.jpg', 6, NULL, 'Dante Alighieri', 2013, 'Livre', NULL),
+(30, 'L\'Odyssée', 'Épopée grecque antique qui raconte le voyage de retour d\'Ulysse, roi d\'Ithaque, après la guerre de Troie et son combat pour retrouver son royaume et sa femme Pénélope.', 14.90, 2, 'Disponible', 'uploads/odyssee.jpg', 9, NULL, 'Homère', -800, 'Livre', NULL),
+(31, 'L\'Iliade', 'Poème épique grec antique qui raconte les événements de la guerre de Troie, notamment la colère d\'Achille et ses conséquences sur le conflit.', 14.90, 2, 'Disponible', 'uploads/iliade.jpg', 9, NULL, 'Homère', -800, 'Livre', NULL),
+(32, 'Je dois crier mais je n\'ai pas de bouche', 'Une anthologie emblématique de la science-fiction post-apocalyptique qui explore les thèmes de l\'identité, de la technologie et de l\'humanité face à un monde altéré.', 15.90, 3, 'Disponible', 'uploads/je_dois_crier.jpg', 7, NULL, 'Harlan Ellison', 1967, 'Livre', NULL),
+(33, 'Gâteau aux Pommes Caramélisées', 'Gâteau moelleux aux pommes, finement caramélisé avec un sirop maison et parsemé d\'amandes grillées.', 3.50, 50, 'Nouveautés', 'uploads/apple_cake.jpg', 12, NULL, NULL, NULL, 'Boisson', NULL),
+(34, 'Gâteau au Fromage', 'Gâteau au fromage crémeux et léger, préparé avec des ingrédients de qualité supérieure.', 4.00, 50, 'Populaire', 'uploads/cheesecake.jpg', 12, NULL, NULL, NULL, 'Boisson', NULL),
+(35, 'Gâteau au Chocolat', 'Gâteau au chocolat riche et décadent, parfait pour les amateurs de chocolat intense.', 3.75, 50, 'Disponible', 'uploads/chocolate_cake.jpg', 12, NULL, NULL, NULL, 'Boisson', NULL),
+(36, 'Gâteau Matcha', 'Gâteau à la japonaise infusé avec du matcha de haute qualité, offrant une saveur unique et délicate.', 4.25, 50, 'Nouveautés', 'uploads/matcha_cake.jpg', 12, NULL, NULL, NULL, 'Boisson', NULL),
+(37, 'Fraises au Chocolat Matcha', 'Fraises fraîches enrobées de chocolat au matcha, un délice sucré et légèrement amer.', 5.00, 50, 'Populaire', 'uploads/matcha_strawberry.jpg', 14, NULL, NULL, NULL, 'Boisson', NULL),
+(38, 'Gaufres Belges', 'Gaufres belges dorées et croustillantes, servies chaudes et parfaites pour un en-cas rapide.', 3.50, 50, 'Disponible', 'uploads/belgian_waffles.jpg', 12, NULL, NULL, NULL, 'Boisson', NULL),
+(39, 'Tartelettes aux Fraises', 'Tartelettes délicates garnies de confiture de fraises maison et d\'une pâte sablée croustillante.', 4.50, 50, 'Disponible', 'uploads/strawberry_jam_pie.jpg', 12, NULL, NULL, NULL, 'Boisson', NULL),
+(40, 'Glace Jersey', 'Glace onctueuse à base de lait de Jersey, crémeuse et pure.', 3.00, 50, 'Populaire', 'uploads/jersey_milk_ice.jpg', 13, NULL, NULL, NULL, 'Boisson', NULL),
+(41, 'Glace à la Sakura', 'Glace délicate parfumée à la fleur de cerisier, évoquant les douces saveurs du printemps japonais.', 3.25, 50, 'Nouveautés', 'uploads/sakura_ice.jpg', 13, NULL, NULL, NULL, 'Boisson', NULL),
+(42, 'Sorbet à la Mangue', 'Sorbet rafraîchissant à la mangue, préparé avec 30% de fruits frais.', 3.50, 50, 'Disponible', 'uploads/mango_sorbet.jpg', 13, NULL, NULL, NULL, 'Boisson', NULL);
 
 -- --------------------------------------------------------
 
@@ -188,19 +208,24 @@ CREATE TABLE `utilisateurs` (
 --
 
 INSERT INTO `utilisateurs` (`id`, `nom`, `email`, `mot_de_passe`, `date_inscription`) VALUES
-(1, 'admin', 'Nour.mesbahi.0@gmail.com', '$2y$10$w/emHcEtjtahKs4qYA.68.F4pSe/4jGJnIDouJx6rFUYOX4GFCLjy', '2025-02-12 10:59:29'),
-(2, 'Mesbahi', 'Nour.mesbahi@gmail.com', '$2y$10$FxORK8KpNk6I9LJefznUNehJXxhQP6YK8q4q8QIWX53kfjOsgmUzO', '2025-02-22 17:46:50'),
-(3, 'moi', 'Nour@gmail.com', '$2y$10$bwSX8iPish1CVWO8uJzz.OzP15eg8ohl9wcV11UAh8djxF7RJHLxK', '2025-02-26 16:37:28');
+(1, 'admin', 'Nour@gmail.com', '$2y$10$1RO9YZuXQwdRVGUt2IAMCuHSInZkVO5rUZMzgkeJ7K3s08AAnWpvW', '2025-04-06 16:38:00');
 
 --
 -- Index pour les tables déchargées
 --
 
 --
+-- Index pour la table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `utilisateur_id` (`utilisateur_id`);
 
 --
 -- Index pour la table `commande_item`
@@ -210,10 +235,18 @@ ALTER TABLE `commande_item`
   ADD KEY `commande_id` (`commande_id`);
 
 --
+-- Index pour la table `fournisseurs`
+--
+ALTER TABLE `fournisseurs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `produits`
 --
 ALTER TABLE `produits`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `categorie_id` (`categorie_id`),
+  ADD KEY `fournisseur_id` (`fournisseur_id`);
 
 --
 -- Index pour la table `utilisateurs`
@@ -227,54 +260,64 @@ ALTER TABLE `utilisateurs`
 --
 
 --
+-- AUTO_INCREMENT pour la table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
 -- AUTO_INCREMENT pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `commande_item`
 --
 ALTER TABLE `commande_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `fournisseurs`
+--
+ALTER TABLE `fournisseurs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `produits`
 --
 ALTER TABLE `produits`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Contraintes pour les tables déchargées
 --
 
 --
+-- Contraintes pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  ADD CONSTRAINT `commandes_ibfk_1` FOREIGN KEY (`utilisateur_id`) REFERENCES `utilisateurs` (`id`) ON DELETE CASCADE;
+
+--
 -- Contraintes pour la table `commande_item`
 --
 ALTER TABLE `commande_item`
-  ADD CONSTRAINT `commande_item_ibfk_1` FOREIGN KEY (`commande_id`) REFERENCES `commandes` (`id`);
+  ADD CONSTRAINT `commande_item_ibfk_1` FOREIGN KEY (`commande_id`) REFERENCES `commandes` (`id`) ON DELETE CASCADE;
+
+--
+-- Contraintes pour la table `produits`
+--
+ALTER TABLE `produits`
+  ADD CONSTRAINT `produits_ibfk_1` FOREIGN KEY (`categorie_id`) REFERENCES `categories` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `produits_ibfk_2` FOREIGN KEY (`fournisseur_id`) REFERENCES `fournisseurs` (`id`) ON DELETE SET NULL;
 COMMIT;
-
-CREATE TABLE categories (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nom VARCHAR(100) NOT NULL
-);
-
-ALTER TABLE produits ADD categorie_id INT DEFAULT NULL;
-ALTER TABLE produits
-  ADD FOREIGN KEY (categorie_id) REFERENCES categories(id);
-ALTER TABLE produits ADD image VARCHAR(255) DEFAULT NULL;
-ALTER TABLE produits
-ADD description TEXT AFTER nom,
-ADD statut VARCHAR(50) DEFAULT 'Disponible' AFTER stock,
-MODIFY image VARCHAR(255) DEFAULT NULL;
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
