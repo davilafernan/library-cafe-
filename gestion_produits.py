@@ -1,4 +1,3 @@
-
 import tkinter as tk
 from tkinter import ttk, messagebox
 import mysql.connector
@@ -125,3 +124,35 @@ charger_produits()
 root.mainloop()
 cursor.close()
 conn.close()
+
+# Barre de menu
+menu_bar = tk.Menu(root)
+root.config(menu=menu_bar)
+
+# Menu "Gestion"
+gestion_menu = tk.Menu(menu_bar, tearoff=0)
+menu_bar.add_cascade(label="Menu", menu=gestion_menu)
+gestion_menu.add_command(label="Fournisseurs", command=lambda: ouvrir_fournisseurs())
+gestion_menu.add_command(label="Ventes", command=lambda: ouvrir_ventes())
+gestion_menu.add_command(label="Rapports", command=lambda: ouvrir_rapports())
+gestion_menu.add_separator()
+gestion_menu.add_command(label="Quitter", command=root.quit)
+
+
+def ouvrir_fournisseurs():
+    fenetre = tk.Toplevel(root)
+    fenetre.title("Gestion des Fournisseurs")
+    fenetre.geometry("400x300")
+    tk.Label(fenetre, text="Interface de gestion des fournisseurs à venir").pack(pady=20)
+
+def ouvrir_ventes():
+    fenetre = tk.Toplevel(root)
+    fenetre.title("Enregistrer une Vente")
+    fenetre.geometry("400x300")
+    tk.Label(fenetre, text="Interface d'enregistrement des ventes à venir").pack(pady=20)
+
+def ouvrir_rapports():
+    fenetre = tk.Toplevel(root)
+    fenetre.title("Rapports")
+    fenetre.geometry("400x300")
+    tk.Label(fenetre, text="Interface de génération des rapports à venir").pack(pady=20)
