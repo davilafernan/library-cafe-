@@ -526,7 +526,7 @@ if (!isset($_SESSION['user_id'])) {
                 </ul>
             </nav>
             
-            <a href="index.php" class="logo">Library Cafe</a>
+            <a href="index.php" class="logo">cafe library </a>
             
             <nav class="right-nav">
                 <ul>
